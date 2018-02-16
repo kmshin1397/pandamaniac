@@ -83,8 +83,8 @@ def run_simulation(adj_list, node_mappings):
   # number between 100 and 200 as the stopping point if the epidemic does not
   # converge.
   prev = None
-  nodes = adj_list.keys()
-  while not is_stable(generation, randint(100, 200), prev, node_color):
+  last_iter = randint(100, 200)
+  while not is_stable(generation, last_iter, prev, node_color):
     prev = deepcopy(node_color)
     for node in nodes:
       (changed, color) = update(adj_list, prev, node)
