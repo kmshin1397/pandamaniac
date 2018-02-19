@@ -83,6 +83,7 @@ def run_simulation(adj_list, node_mappings):
   # number between 100 and 200 as the stopping point if the epidemic does not
   # converge.
   prev = None
+  nodes = adj_list.keys()
   last_iter = randint(100, 200)
   while not is_stable(generation, last_iter, prev, node_color):
     prev = deepcopy(node_color)
@@ -129,7 +130,7 @@ def update(adj_list, node_color, node):
     team_count[node_color[node]] += 1.5
   most_common = team_count.most_common(1)
   if len(most_common) > 0 and \
-    most_common[0][1] > len(colored_neighbors) / 2.0:
+    most_common[0][1] > (len(colored_neighbors) + (1.5 if node_color[node] is not None else 0)) / 2.0:
     return (True, most_common[0][0])
 
   return (False, node_color[node])
@@ -167,4 +168,4 @@ def get_result(colors, node_color):
 
 
 if __name__ == '__main__':
-  print USAGE
+  print (USAGE)

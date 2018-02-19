@@ -1,8 +1,9 @@
 import json
 import random
 
-input_filename = 'testgraph1.json'
+input_filename = '8.35.1.json'
 output_filename = 'ouput.txt'
+num_seeds = 35
 
 def choose_nodes(input_filename, num_seeds):
 	with open(input_filename) as f:
@@ -19,7 +20,7 @@ def print_output(output_filename, chosen_nodes):
 				f.write(node)
 				f.write('\n')
 
-rand = choose_nodes(input_filename, 5)
+rand = choose_nodes(input_filename, num_seeds)
 print_output(output_filename, rand)
 
 
